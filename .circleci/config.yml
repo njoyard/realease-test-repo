@@ -44,7 +44,7 @@ jobs:
           at: .
       - run:
           name: Create release tag if not already present
-          command: npx realease tag
+          command: npx realease tag --api $GITHUB_API_TOKEN
 
 workflows:
   version: 2
