@@ -1,0 +1,62 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:10
+      environment:
+        JOBS: 2
+  working_directory: ~/rtr
+
+version: 2
+
+jobs:
+  checkout_code:
+    <<: *defaults
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  install_dependencies:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          keys:
+            - rtr-node10-v1-{{ checksum "yarn.lock" }}
+      - run:
+          name: Yarn Install
+          command: yarn install --non-interactive
+      - save_cache:
+          key: rtr-node10-v1-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/rtr/node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Create release tag if not already present
+          command: npx realease tag
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - checkout_code
+      - install_dependencies:
+          requires:
+            - checkout_code
+      - release:
+          requires:
+            - install_dependencies
+          filters:
+            branches:
+              only: master
