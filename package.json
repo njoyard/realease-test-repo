@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Nicolas Joyard <nicolas@njoyard.fr>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "realease": "git://github.com/njoyard/realease"
+  }
 }
