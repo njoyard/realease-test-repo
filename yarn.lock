@@ -933,9 +933,10 @@ readable-stream@^2.0.6, readable-stream@^2.3.0, readable-stream@^2.3.5:
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-"realease@git://github.com/njoyard/realease":
+realease@^1.0.0:
   version "1.0.0"
-  resolved "git://github.com/njoyard/realease#782a069e4ffc4309b2edd812370ee09a3b7f6e91"
+  resolved "https://registry.yarnpkg.com/realease/-/realease-1.0.0.tgz#a1d5adebf8559d897cd00a895fa878e082edd24e"
+  integrity sha512-fRcY7JqReHqCRPyhbJ54+G6l/xxvMdGvvUJOSIlbqXBkLM1v55Fg+1dggO0o7dgUrc5RcBoDXw5HnVMGo2L7SQ==
   dependencies:
     "@octokit/rest" "^16.25.0"
     cli-argparse "^1.1.2"

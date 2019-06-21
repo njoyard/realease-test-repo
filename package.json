@@ -5,6 +5,6 @@
   "author": "Nicolas Joyard <nicolas@njoyard.fr>",
   "license": "MIT",
   "devDependencies": {
-    "realease": "git://github.com/njoyard/realease"
+    "realease": "^1.0.0"
   }
 }
